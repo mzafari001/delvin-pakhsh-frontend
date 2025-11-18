@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" class="delvin-toolbar">
+
+  <!-- لوگو (همیشه نمایش داده می‌شود) -->
+  <div class="logo">
+    Logo / Brand Name
+  </div>
+
+  <!-- 1. عناصر دسکتاپ (نمایش فقط زمانی که isHandset$ برابر false است) -->
+  <ng-container *ngIf="(isHandset$ | async) === false">
+    <!-- منوهای اصلی دسکتاپ -->
+    <div class="desktop-menu">
+      <a mat-button routerLink="/home">صفحه اصلی</a>
+      <a mat-button routerLink="/products">محصولات</a>
+      <a mat-button routerLink="/about">درباره ما</a>
+    </div>
+
+    <!-- Spacer: تمام فضای خالی بین منو و دکمه ورود را پر می‌کند -->
+    <span class="fx-spacer"></span>
+
+    <!-- دکمه ورود / پروفایل دسکتاپ -->
+    <button mat-raised-button color="accent" routerLink="/login">ورود / ثبت نام</button>
+  </ng-container>
+
+
+  <!-- 2. عناصر موبایل (نمایش فقط زمانی که isHandset$ برابر true است) -->
+  <ng-container *ngIf="(isHandset$ | async) === true">
+    <!-- Spacer کوچک برای فاصله بین لوگو و دکمه همبرگری -->
+    <span class="fx-spacer-mobile"></span>
+
+    <!-- دکمه منوی همبرگری -->
+    <button mat-icon-button
+            aria-label="Toggle menu"
+            (click)="mobileMenuToggle()"
+            class="mobile-menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-container>
+
+</mat-toolbar>
+
+<!-- سایدمنوی موبایل (فقط در حالت موبایل نمایش داده می‌شود) -->
+<mat-sidenav-container class="sidenav-container" *ngIf="(isHandset$ | async) === true">
+  <mat-sidenav #sidenav mode="over" [opened]="isMobileMenuOpen" (openedChange)="isMobileMenuOpen = $event">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" (click)="sidenav.close()">صفحه اصلی</a>
+      <a mat-list-item routerLink="/products" (click)="sidenav.close()">محصولات</a>
+      <a mat-list-item routerLink="/about" (click)="sidenav.close()">درباره ما</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/login" (click)="sidenav.close()">ورود / ثبت نام</a>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>

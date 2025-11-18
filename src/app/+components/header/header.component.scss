@@ -1,0 +1,65 @@
+// تم اصلی
+.delvin-toolbar {
+    // رنگ اصلی (Primary) باید از تنظیمات تم رنگی شما بیاید.
+    // اگر در تم، Primary روشن باشد، اینجا پس‌زمینه روشن خواهد بود.
+    background-color: white !important;
+    color: #333333; // رنگ متن تیره برای کنتراست مینیمال
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); // سایه بسیار کم برای تفکیک
+    padding: 0 20px !important; // پدینگ کناری کمی برای فضای خالی
+    height: 64px; // ارتفاع استاندارد Material
+
+    .logo {
+        font-size: 1.4em;
+        font-weight: 600; // فونت کمی پررنگ‌تر برای دیده شدن
+        cursor: pointer;
+    }
+
+    // Spacer دسکتاپ (وظیفه اصلی: هل دادن عناصر به انتها)
+    .fx-spacer {
+        flex-grow: 1;
+        // نکته مینیمال: هیچ Margin یا Padding اضافی به Spacer ندهید
+    }
+
+    // استایل لینک‌های دسکتاپ
+    .desktop-menu {
+        a.mat-button {
+            // فاصله کم بین آیتم‌های منو
+            margin: 0 8px;
+            padding: 0 10px;
+            font-weight: 400;
+            text-transform: none; // حذف حروف بزرگ برای مینیمال بودن
+        }
+    }
+
+    // استایل دکمه ورود دسکتاپ
+    button.mat-raised-button {
+        margin-left: 15px;
+        text-transform: none;
+        // اگر رنگ primary را روشن کرده‌اید، می‌توانید دکمه ورود را با رنگ accent
+        // یا دکمه‌ای با پس‌زمینه سفید و حاشیه تیره طراحی کنید.
+    }
+
+    // استایل دکمه همبرگری موبایل
+    .mobile-menu-button {
+        margin-left: 10px; // فاصله کمی از لوگو
+    }
+}
+
+
+// --- استایل سایدمنوی موبایل ---
+.sidenav-container {
+    // این قسمت فقط برای اطمینان از پوشش کامل صفحه هنگام باز شدن سایدمنو است
+    height: calc(100vh - 64px); // ارتفاع کل صفحه منهای ارتفاع هدر
+}
+
+mat-sidenav {
+    width: 250px; // عرض سایدمنو
+
+    mat-nav-list {
+        padding-top: 0;
+        a.mat-list-item {
+            font-size: 1em;
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@if (action=='delete') {
+  آیا از حذف مورد اطمینان دارید؟
+}
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>نام محصول</mat-label>
+    <input [disabled]="action=='delete'" name="name" [(ngModel)]="data.name" matInput placeholder="Ex. Pizza" value="نام محصول">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>قیمت</mat-label>
+    <input [disabled]="action=='delete'" name="price" [(ngModel)]="data.price" matInput placeholder="Ex. Pizza" value="قیمت">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>توضیحات</mat-label>
+    <input [disabled]="action=='delete'" name="description" [(ngModel)]="data.description" matInput placeholder="Ex. Pizza" value="توضیحات">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>تصویر</mat-label>
+    <input [disabled]="action=='delete'" name="imageUrl" [(ngModel)]="data.imageUrl" matInput placeholder="Ex. Pizza" value="تصویر">
+  </mat-form-field>
+
+
+</form>
+<div>
+  <button (click)="ok()" mat-flat-button>تایید</button>
+  <button (click)="onCansel.emit()" mat-button>انصراف</button>
+</div>

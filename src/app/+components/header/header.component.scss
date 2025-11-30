@@ -10,10 +10,14 @@
     .logo {
 
         font-size: 1em;
-       
         color: black;
         font-weight: 600; // فونت کمی پررنگ‌تر برای دیده شدن
         cursor: pointer;
+
+        .img{
+          width: 10%;
+          height: 15%;
+        }
     }
 
     // Spacer دسکتاپ (وظیفه اصلی: هل دادن عناصر به انتها)

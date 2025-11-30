@@ -1,11 +1,13 @@
 <mat-toolbar color="primary" class="delvin-toolbar">
 
   <!-- لوگو (همیشه نمایش داده می‌شود) -->
-
   <div class="logo">
     <img src="/images/logo.png">
-
   </div>
+  <span class="fx-spacer"></span>
+
+
+
 
   @if ((isHandset$ | async) == false) {
   <!-- 1. عناصر دسکتاپ (نمایش فقط زمانی که isHandset$ برابر false است) -->
@@ -35,6 +37,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   }
+
 
 
 </mat-toolbar>

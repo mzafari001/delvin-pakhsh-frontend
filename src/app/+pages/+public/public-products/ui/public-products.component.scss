@@ -1,0 +1,35 @@
+/* src/app/products/products.component.css */
+
+:host {
+    display: block;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    color: #303f9f; /* آبی تیره */
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.products-container {
+    display: grid;
+    /* چیدمان کارت‌ها در ۳ ستون در دسکتاپ */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 10px 0;
+}
+
+hr {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px dashed #ccc;
+}
+
+h4 {
+    color: #555;
+    margin-bottom: 10px;
+}

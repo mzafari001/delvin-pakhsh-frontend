@@ -1,0 +1,32 @@
+<!-- src/app/products/products.component.html (بدون تغییر) -->
+<h2>لیست محصولات (با داده Mock درون کامپوننت)</h2>
+@if (products.length > 0){
+
+<div class="products-container">
+  <!-- <div *ngIf="products.length > 0; else loadingOrEmpty" class="products-container"> -->
+  @for(product of products; track $index){
+  <app-product
+  [product]="product">
+  <!-- (addToCart)="onAddToCart($event)" -->
+  
+  </app-product>
+  }
+</div>
+}
+
+<ng-template #loadingOrEmpty>
+  <p>محصولی یافت نشد.</p>
+</ng-template>
+
+<hr>
+<h4>سبد خرید (فقط آیدی‌ها):</h4>
+<p>{{ cartItems.join(', ') || 'سبد خرید خالی است.' }}</p>
+
+
+
+<!-- <app-product
+  *ngFor="let item of products"
+  [product]="item">
+  (addToCart)="handleAddToCart($event)">
+ </app-product>
+ -->

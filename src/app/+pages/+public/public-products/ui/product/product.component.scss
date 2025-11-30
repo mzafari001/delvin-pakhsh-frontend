@@ -1,0 +1,104 @@
+
+/* src/app/product/product.component.css */
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 1.2em;
+    color: #e91e63; /* رنگ برجسته برای قیمت */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 0.9em;
+    color: #666;
+    flex-grow: 1; /* اجازه می‌دهد متن فضا را پر کند */
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    background-color: #4CAF50; /* سبز */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin-top: auto; /* دکمه را به پایین هل می‌دهد */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+// .product-card {
+//   width: 280px;
+//   margin: 1rem;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+//   &:hover {
+//     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+//     transform: translateY(-3px);
+//   }
+
+//   img {
+//     height: 180px;
+//     object-fit: cover;
+//     border-radius: 4px;
+//   }
+
+//   .description {
+//     font-size: 0.9rem;
+//     color: #555;
+//     margin-top: 0.5rem;
+//   }
+
+//   mat-card-actions {
+//     button {
+//       font-weight: 600;
+//       border-radius: 6px;
+//     }
+//   }
+// }

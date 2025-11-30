@@ -3,6 +3,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { OnInit } from '@angular/core';
 import { NgStyle } from '@angular/common';
+import { map, Observable, shareReplay } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AsyncPipe } from '@angular/common';
 
 
 
@@ -13,6 +16,7 @@ import { NgStyle } from '@angular/common';
     MatCardModule,
     MatIconModule,
     NgStyle,
+    AsyncPipe
 
 
   ],
@@ -77,6 +81,13 @@ export class BanerComponent implements OnInit {
   //     map(result => result.matches),
   //     shareReplay()
   //   );
+    private breakpointObserver = inject(BreakpointObserver);
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 }
 
 

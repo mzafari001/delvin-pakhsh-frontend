@@ -1,0 +1,56 @@
+<!-- src/app/product/product.component.html -->
+
+<mat-card class="product-card-container">
+  <!-- تصویر محصول -->
+  <img mat-card-image src="./images/{{product.imageUrl}}" [alt]="product.name" class="product-image">
+
+  <mat-card-content>
+    <!-- عنوان محصول -->
+    <h3 mat-card-title>{{ product.name }}</h3>
+
+    <!-- قیمت -->
+    <p class="price">{{ product.price}} تومان</p>
+
+    <!-- توضیحات (از mat-card-subtitle برای عنوان و mat-card-content برای توضیحات بهتر استفاده می‌کنیم) -->
+    <mat-card-subtitle style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+      {{ product.description }}
+    </mat-card-subtitle>
+
+    <!-- امتیازدهی (مثال با استفاده از آیکون متریال) -->
+    <!-- <div>
+            <mat-icon style="color: gold;">star</mat-icon>
+            {{ product.rating }} -->
+    <!-- <span style="font-size: 0.8em; color: #777;">({{ product.reviewCount }} نظر)</span> -->
+    <!-- </div> -->
+  </mat-card-content>
+
+  <mat-card-actions>
+    <!-- دکمه اضافه کردن به سبد خرید -->
+    <!-- <button mat-raised-button color="primary" (click)="addToCart(product)"> -->
+    <button mat-raised-button color="primary">
+      <mat-icon>shopping_cart</mat-icon>
+      افزودن به سبد خرید
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+<!-- <mat-card class="product-card" appearance="outlined">
+  <img mat-card-image [src]="product.image" [alt]="product.name">
+
+  <mat-card-header>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.price | currency:'IRR':'symbol' }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="description">{{ product.description }}</p>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="onAddToCart()">
+      افزودن به سبد
+    </button>
+  </mat-card-actions>
+</mat-card> -->

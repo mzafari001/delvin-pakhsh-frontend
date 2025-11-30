@@ -1,4 +1,4 @@
-<div  class="custom-carousel-container">
+<div [class.mobile]="(isHandset$ |async)" [class.custom-carousel-container]="(isHandset$ |async)==false">
 
   <!-- نمایش اسلاید فعال -->
   <div class="banner-card" [ngStyle]="{'background-image': 'url(' + banners[currentIndex].imageUrl + ')'}">

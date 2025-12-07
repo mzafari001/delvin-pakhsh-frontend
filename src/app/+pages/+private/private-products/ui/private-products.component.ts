@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { ProductsService } from '../../../../+shared/services/products.service';
 import { MatIcon } from "@angular/material/icon";
@@ -13,31 +13,37 @@ import { PrivateProductComponent } from "./private-product/ui/private-product.co
   templateUrl: './private-products.component.html',
   imports: [MatTableModule, MatIcon, MatButton, PrivateProductComponent],
 })
-export class PrivateProductsComponent {
+export class PrivateProductsComponent implements OnInit {
+  ngOnInit(): void {
+    this.refresh();
+
+  }
 
   action = 'list';
   selected: Product | undefined;
-  selectedId = 0;
-  ok(product: Product) {
+  selectedId:string ='' ;
+  async ok(product: Product) {
     if (this.action == 'create') {
-      this.productsService.add(product);
+
+      await this.productsService.add(product);
+
     }
     else if (this.action == 'edit') {
-      this.productsService.edit(this.selectedId, product);
+      await this.productsService.edit(this.selectedId, product);
     }
     else if (this.action == 'delete') {
-      this.productsService.remove(this.selectedId);
+      await this.productsService.remove(this.selectedId);
 
     }
 
-    this.refresh();
+    await this.refresh();
     this.action = 'list';
   }
   cansel() {
     this.action = 'list';
   }
-  refresh() {
-    this.dataSource = this.productsService.list();
+  async refresh() {
+    this.dataSource =await this.productsService.list();
   }
 
   create() {
@@ -47,8 +53,9 @@ export class PrivateProductsComponent {
   edit(product: Product) {
     this.selected = { ...product };
     this.selectedId = product.id;
-    console.log(this.action);
     this.action = 'edit';
+    console.log(this.action);
+
   }
   delete(product: Product) {
     this.selected = { ...product };
@@ -62,5 +69,5 @@ export class PrivateProductsComponent {
   productsService = inject(ProductsService);
   displayedColumns: string[] = ['name', 'price', 'description', 'imageUrl', 'actions'];
 
-  dataSource = this.productsService.list();
+  dataSource :any;
 }

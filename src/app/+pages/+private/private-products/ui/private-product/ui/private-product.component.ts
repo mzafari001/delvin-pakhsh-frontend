@@ -29,7 +29,7 @@ export class PrivateProductComponent implements OnChanges {
   @Output() onOk = new EventEmitter<Product>();
   @Input() current: Product | undefined;
   @Input() action:string='';
-  data: Product = { id: 0, name: '', description: '', price: 0, imageUrl: '' };
+  data: Product = { id: '', name: '', description: '', price: 0, imageUrl: '' };
   ok() {
     this.onOk.emit(this.data);
   }

@@ -1,0 +1,38 @@
+<div class="basket-container">
+  <h2>سبد خرید شما</h2>
+
+  <!-- استفاده از async pipe برای مشاهده لیست محصولات -->
+  <ng-container *ngIf="cartItems$ | async as items">
+
+    <div *ngIf="items.length === 0" class="empty-message">
+      <p>سبد خرید شما خالی است.</p>
+    </div>
+
+    <ul *ngIf="items.length > 0" class="item-list">
+      <li *ngFor="let item of items" class="basket-item">
+
+        <div class="item-details">
+          <strong>{{ item.name }}</strong>
+          <span>{{ item.price  }} تومان</span>
+          <!-- می‌توانید از Pipe برای فرمت‌بندی قیمت استفاده کنید -->
+        </div>
+
+        <button
+          class="remove-btn"
+          (click)="handleRemove(item.id)">
+          حذف
+        </button>
+      </li>
+    </ul>
+
+    <div *ngIf="items.length > 0" class="footer">
+      <div class="total-price">
+        مجموع نهایی: <strong>{{ totalPrice  }} تومان</strong>
+      </div>
+      <button class="clear-all-btn" (click)="clearBasket()">
+        تکمیل سفارش و خالی کردن سبد
+      </button>
+    </div>
+
+  </ng-container>
+</div>

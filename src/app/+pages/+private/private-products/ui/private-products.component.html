@@ -1,3 +1,7 @@
+@if (busy) {
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+
+}
 @if (action=='list') {
 <button (click)="create()" mat-flat-button>افزودن</button>
 
@@ -52,5 +56,6 @@
 }
 
 @else {
-<app-private-product [action]="action"  [current]="selected" (onCansel)="cansel()" (onOk)="ok($event)"></app-private-product>
+<app-private-product [action]="action" [current]="selected" (onCansel)="cansel()"
+  (onOk)="ok($event)"></app-private-product>
 }

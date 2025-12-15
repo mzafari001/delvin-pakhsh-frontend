@@ -5,13 +5,20 @@ import { MatIcon } from "@angular/material/icon";
 import { Product } from '../../../../+shared/models/product.model';
 import { MatButton } from "@angular/material/button";
 import { PrivateProductComponent } from "./private-product/ui/private-product.component";
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @Component({
   selector: 'app-private-products',
   styleUrl: './private-products.component.scss',
   templateUrl: './private-products.component.html',
-  imports: [MatTableModule, MatIcon, MatButton, PrivateProductComponent],
+  imports: [
+    MatProgressBarModule,
+    MatTableModule,
+    MatIcon,
+    MatButton,
+    PrivateProductComponent
+  ],
 })
 export class PrivateProductsComponent implements OnInit {
   ngOnInit(): void {
@@ -21,29 +28,47 @@ export class PrivateProductsComponent implements OnInit {
 
   action = 'list';
   selected: Product | undefined;
-  selectedId:string ='' ;
-  async ok(product: Product) {
+  selectedId: string = '';
+  busy = false;
+  ok(product: Product) {
     if (this.action == 'create') {
+      this.busy = true;
+      this.productsService.add(product).subscribe(res => {
+        this.refresh();
+        this.action = 'list';
+        this.busy = false;
 
-      await this.productsService.add(product);
+      });
 
     }
     else if (this.action == 'edit') {
-      await this.productsService.edit(this.selectedId, product);
+      this.busy = true;
+      this.productsService.edit(this.selectedId, product).subscribe(res => {
+        this.refresh();
+        this.action = 'list';
+        this.busy = false;
+      });
     }
     else if (this.action == 'delete') {
-      await this.productsService.remove(this.selectedId);
+      this.busy = true;
+      this.productsService.remove(this.selectedId).subscribe(res => {
+        this.refresh();
+        this.action = 'list';
+        this.busy = false;
+      });
 
     }
 
-    await this.refresh();
-    this.action = 'list';
   }
   cansel() {
     this.action = 'list';
   }
-  async refresh() {
-    this.dataSource =await this.productsService.list();
+  refresh() {
+    this.busy = true;
+    this.productsService.list().subscribe(r => {
+      this.dataSource = r;
+      this.busy = false;
+    });
   }
 
   create() {
@@ -69,5 +94,5 @@ export class PrivateProductsComponent implements OnInit {
   productsService = inject(ProductsService);
   displayedColumns: string[] = ['name', 'price', 'description', 'imageUrl', 'actions'];
 
-  dataSource :any;
+  dataSource: any;
 }

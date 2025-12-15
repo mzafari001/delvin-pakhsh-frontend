@@ -13,6 +13,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../../../+shared/services/auth.service';
 import { Router } from '@angular/router';
+import { LoginResult } from '../../../../+shared/models/login_result';
+import { Token } from '@angular/compiler';
+
+
+
 
 
 @Component({
@@ -37,21 +42,33 @@ export class LoginComponent {
   router = inject(Router);
   busy = false;
   login: Login = { username: '', password: '', keepMe: false };
-  message:string='';
-  chek() {
+  message: string = '';
+  check() {
     this.busy = true;
-    let result = this.auth.check(this.login.username, this.login.password);
-    result.subscribe(r => {
-      if (r) {
-        this.router.navigateByUrl('admin');
+    this.auth.check(this.login.username, this.login.password).subscribe(r => {
+      const result = r as LoginResult ;
+      //reult ro tabdil mikone be Loginresult
+      if (!result.successfull) {
+        this.message = result.message;
+
       }
       else {
-        this.message="اشتباه"
-        console.log(this.message);
+        sessionStorage.setItem('token' , result.token);
+       
+        if (this.login.keepMe) {
+          //تنظیم من را بخاطر بسپار
+          localStorage.setItem('token',result.token);
+        }
+        this.router.navigate(['/admin']);
       }
-      this.busy=false;
-    })
+
+      this.busy = false;
+
+
+    });
   }
+
+
   isValid() {
 
     if (this.login.username.trim() == '' || this.login.password == '') {

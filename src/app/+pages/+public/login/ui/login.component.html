@@ -1,6 +1,6 @@
 <mat-card [class.mobile]="(isHandset$|async)" appearance="outlined">
   <mat-card-content>
-    <form (ngSubmit)="chek()">
+    <form (ngSubmit)="check()">
       <mat-form-field appearance="outline">
         <mat-label>نام کاربری</mat-label>
         <input name="un" [(ngModel)]="login.username" matInput placeholder="نام کاربری">
@@ -16,6 +16,9 @@
 
       </mat-form-field>
       <mat-checkbox name="km" [(ngModel)]="login.keepMe">مرا بخاطر بسپار</mat-checkbox>
+      @if (message!='') {
+      <div>{{message}}</div>
+      }
       <button [disabled]="!isValid() || busy" mat-flat-button>
         @if(busy){
         <mat-spinner diameter="30"></mat-spinner>

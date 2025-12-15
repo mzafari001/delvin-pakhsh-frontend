@@ -7,7 +7,7 @@ import { FooterComponent } from "../../../+components/footer/footer.component";
 @Component({
   selector: 'app-public-navigation',
   imports: [RouterOutlet, BanerComponent, HeaderComponent, FooterComponent,
-    //  BasketComponent
+    
     ],
   templateUrl: './public-navigation.component.html',
   styleUrls: ['./public-navigation.component.scss']

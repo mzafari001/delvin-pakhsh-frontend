@@ -1,31 +1,31 @@
 
-import { Component, inject, OnInit } from '@angular/core';
-import { Product } from '../../../../+shared/models/product.model';
-import { ProductComponent } from './product/product.component';
-import { ProductsService } from '../../../../+shared/services/products.service';
-import { BasketService } from '../../../../+shared/services/basket.service';
+// import { Component, inject, OnInit } from '@angular/core';
+// import { Product } from '../../../../+shared/models/product.model';
+// import { ProductComponent } from './product/product.component';
+// import { ProductsService } from '../../../../+shared/services/products.service';
+// import { BasketService } from '../../../../+shared/services/basket.service';
 
 
-@Component({
-  selector: 'app-products',
-  imports: [
+// @Component({
+//   selector: 'app-products',
+//   imports: [
 
-  ],
-  templateUrl: 'public-products.component.html',
-  styleUrls: ['public-products.component.scss']
-})
-export class PublicProductsComponent {
+//   ],
+//   templateUrl: 'public-products.component.html',
+//   styleUrls: ['public-products.component.scss']
+// })
+// export class PublicProductsComponent {
 
-  productsServic = inject(ProductsService);
-  private basketService = inject(BasketService);
+//   productsServic = inject(ProductsService);
+//   private basketService = inject(BasketService);
 
-   products = this.productsServic.list();
+//    products = this.productsServic.list();
 
-  AddToBasket(product: Product) {
-    this.basketService.addProduct(product);
-    console.log(product);
-  }
+//   AddToBasket(product: Product) {
+//     this.basketService.addProduct(product);
+//     console.log(product);
+//   }
 
 
 
-}
+// }

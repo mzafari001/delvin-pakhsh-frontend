@@ -2,30 +2,30 @@
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
+import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  http = inject(HttpClient);
-  lastId: number = 8;
+  backend = inject(BackendService);
 
-  async list() {
-   return await this.http.get('http://localhost:5206/api/v1/products/list').toPromise();
+
+  list() {
+    return this.backend.get('/api/v1/products/list');
   }
-  async add(product: Product) {
-    await this.http.post('http://localhost:5206/api/v1/products/create', product).toPromise();
+  add(product: Product) {
+    return this.backend.post('/api/v1/products/create', product);
 
   }
-  async edit(id: string , product: Product) {
-
-    await this.http.put('http://localhost:5206/api/v1/products/update/' + id , product).toPromise();
+  edit(id: string, product: Product) {
+    return this.backend.put('/api/v1/products/update/' + id, product);
   }
 
-  async remove(id: string) {
-    await this.http.delete('http://localhost:5206/api/v1/products/remove/' + id).toPromise();
+  remove(id: string) {
+    return this.backend.delete('/api/v1/products/remove/' + id);
 
-}
+  }
 
   // list() {
   //   return this.products;

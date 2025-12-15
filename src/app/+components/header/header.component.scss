@@ -1,3 +1,4 @@
+
 .delvin-toolbar {
     // رنگ اصلی (Primary) باید از تنظیمات تم رنگی شما بیاید.
     // اگر در تم، Primary روشن باشد، اینجا پس‌زمینه روشن خواهد بود.
@@ -7,17 +8,12 @@
     padding: 0 20px !important; // پدینگ کناری کمی برای فضای خالی
     height: 64px; // ارتفاع استاندارد Material
 
-    .logo {
-
-        font-size: 1em;
-        color: black;
-        font-weight: 600; // فونت کمی پررنگ‌تر برای دیده شدن
+        .logo img {
         cursor: pointer;
-
-        .img{
-          width: 10%;
-          height: 15%;
-        }
+        // برای حفظ تناسب لوگو در هر دو حالت
+        height: 40px;
+        width: auto;
+    }
     }
 
     // Spacer دسکتاپ (وظیفه اصلی: هل دادن عناصر به انتها)
@@ -49,7 +45,7 @@
     .mobile-menu-button {
         margin-left: 10px; // فاصله کمی از لوگو
     }
-}
+
 
 
 // --- استایل سایدمنوی موبایل ---

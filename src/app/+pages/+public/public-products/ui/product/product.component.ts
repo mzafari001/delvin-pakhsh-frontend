@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-product',
   imports: [
     MatCardModule,
-    MatButtonModule,
+    MatButtonModule, 
     MatIconModule
   ],
   templateUrl: './product.component.html',
@@ -24,5 +24,5 @@ export class ProductComponent {
     buy(product:Product) {
     this.onBuy.emit(this.product);
   }
- 
+
 }

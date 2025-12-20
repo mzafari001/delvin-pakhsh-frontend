@@ -1,93 +1,75 @@
+@font-face {
+  font-family: Dana;
+  src: url('/fonts/Dana.woff2');
+}
 
 .delvin-toolbar {
-    // رنگ اصلی (Primary) باید از تنظیمات تم رنگی شما بیاید.
-    // اگر در تم، Primary روشن باشد، اینجا پس‌زمینه روشن خواهد بود.
-    background-color: white !important;
-    color: #333333; // رنگ متن تیره برای کنتراست مینیمال
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); // سایه بسیار کم برای تفکیک
-    padding: 0 20px !important; // پدینگ کناری کمی برای فضای خالی
-    height: 64px; // ارتفاع استاندارد Material
+  background-color: rgb(255, 255, 255) !important;
+  color: #333333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1em 20px !important;
+  height: 64px;
 
-        .logo img {
-        cursor: pointer;
-        // برای حفظ تناسب لوگو در هر دو حالت
-        height: 40px;
-        width: auto;
+
+  .logo {
+    img {
+      height: 40px;
+      width: auto;
     }
-    }
+  }
+}
 
-    // Spacer دسکتاپ (وظیفه اصلی: هل دادن عناصر به انتها)
-    .fx-spacer {
-        flex-grow: 1;
-        // نکته مینیمال: هیچ Margin یا Padding اضافی به Spacer ندهید
-    }
+.fx-spacer {
+  flex-grow: 1;
+}
 
-    // استایل لینک‌های دسکتاپ
-    .desktop-menu {
-        a.mat-button {
-            // فاصله کم بین آیتم‌های منو
-            margin: 0 8px;
-            padding: 0 10px;
-            font-weight: 400;
-            text-transform: none; // حذف حروف بزرگ برای مینیمال بودن
-        }
-    }
+.desktop-menu {
 
-    // استایل دکمه ورود دسکتاپ
-    button.mat-raised-button {
-        margin-left: 15px;
-        text-transform: none;
-        // اگر رنگ primary را روشن کرده‌اید، می‌توانید دکمه ورود را با رنگ accent
-        // یا دکمه‌ای با پس‌زمینه سفید و حاشیه تیره طراحی کنید.
-    }
+  a.mat-button {
+    margin: 10em;
+    padding: 0;
 
-    // استایل دکمه همبرگری موبایل
-    .mobile-menu-button {
-        margin-left: 10px; // فاصله کمی از لوگو
-    }
+  }
+}
+
+button.mat-raised-button {
+  // margin-left: 50px;
+  text-transform: none;
+}
+
+.mobile-menu-button {
+  margin-right: 10px;
+}
 
 
-
-// --- استایل سایدمنوی موبایل ---
+// 1. کانتینر اصلی (برای Overlay)
 .sidenav-container {
-    // خارج کردن از جریان layout تا فاصله بین هدر و بنر ایجاد نشود
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    overflow: visible;
-    // container خودش فضا اشغال نمی‌کند اما sidenav overlay کار می‌کند
+  // خارج کردن از جریان layout تا فاصله بین هدر و بنر ایجاد نشود
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  z-index: 500;
+  // container خودش فضا اشغال نمی‌کند اما sidenav overlay کار می‌کند
 }
 
-// sidenav-content را کاملاً مخفی کنیم چون در حالت overlay نیازی نیست
 .sidenav-content-hidden {
-    display: none !important;
+  display: none !important;
 }
 
-// اطمینان از اینکه backdrop و sidenav overlay درست نمایش داده شوند
-:host ::ng-deep .sidenav-container .mat-drawer-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
+.sidenav-container mat-sidenav {
+  position: fixed;
+  z-index: 1000;
+  width: 200px;
+
 }
 
-:host ::ng-deep .sidenav-container mat-sidenav {
-    position: fixed;
-    z-index: 1000;
-}
+mat-nav-list {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+    font-size: large;
 
-mat-sidenav {
-    width: 250px; // عرض سایدمنو
-
-    mat-nav-list {
-        padding-top: 0;
-        a.mat-list-item {
-            font-size: 1em;
-            text-align: left;
-        }
-    }
 }

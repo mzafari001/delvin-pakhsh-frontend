@@ -1,25 +1,21 @@
-<!--
-@if (products.length > 0){
+@if (products$ | async; as products) {
 
-<div class="products-container">
-  @for(product of products ; track $index){
-  <app-product
-  [product]="product"
-  (onBuy)="AddToBasket($event)"
-  >
+  @if (products.length > 0) {
 
-  </app-product>
+    <div class="products-container">
+      @for (product of products; track product.id) {
+        <app-product [product]="product"></app-product>
+      }
+    </div>
+
+  } @else {
+    <p>محصولی یافت نشد.</p>
   }
-</div>
+
+} @else {
+  <p>در حال دریافت محصولات...</p>
 }
 
-<ng-template #loadingOrEmpty>
-  <p>محصولی یافت نشد.</p>
-</ng-template>
-
-<hr>
-<h4>سبد خرید (فقط آیدی‌ها):</h4>
-<p>سبد خرید خالی است</p>
 
 
- -->
+

@@ -77,6 +77,7 @@ export class PrivateProductsComponent implements OnInit {
   }
   edit(product: Product) {
     this.selected = { ...product };
+    //یک کپی از پروداکت میسازه
     this.selectedId = product.id;
     this.action = 'edit';
     console.log(this.action);

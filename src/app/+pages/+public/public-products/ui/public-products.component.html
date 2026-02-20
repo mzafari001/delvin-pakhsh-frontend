@@ -1,21 +1,13 @@
-@if (products$ | async; as products) {
 
-  @if (products.length > 0) {
-
-    <div class="products-container">
-      @for (product of products; track product.id) {
-        <app-product [product]="product"></app-product>
-      }
-    </div>
-
-  } @else {
-    <p>محصولی یافت نشد.</p>
+@if (products.length > 0) {
+<div class="products-container">
+  @for (product of products; track product.id) {
+  <app-product [product]="product" (onBuy)="AddToBasket(product)"></app-product>
   }
+</div>
 
-} @else {
-  <p>در حال دریافت محصولات...</p>
 }
 
 
-
+ 
 

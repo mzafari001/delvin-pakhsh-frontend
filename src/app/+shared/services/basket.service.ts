@@ -1,39 +1,56 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../models/product.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+
+import { Injectable, signal, computed } from '@angular/core';
+import { BasketProduct } from '../models/basketProduct.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
 
+  private _basket = signal<BasketProduct[]>([]);
+  basket = this._basket.asReadonly();
 
-  private basket: Product[] = [];
-  private cartSubject = new BehaviorSubject<Product[]>(this.basket);
-  public cart$: Observable<Product[]> = this.cartSubject.asObservable();
+  count = computed(() =>
+    this._basket().reduce((sum, item) => sum + item.count, 0)
 
+  );
 
+  addProduct(product: BasketProduct) {
+    this._basket.update(items => {
+      const existing = items.find(item => item.id == product.id);
 
-  // متد افزودن (از قبل پیاده‌سازی شده)
-  addProduct(product: Product): void {
-    this.basket.push(product);
-    this.cartSubject.next(this.basket);
+      if (existing) {
+        return items.map(item =>
+          item.id == product.id
+            ? { ...item, count: item.count + 1 }
+            : item
+        );
+      }
+ 
+      return [...items, { ...product, count: 1 }];
+    });
   }
 
-  /**
-   * آیتمی را بر اساس ID از سبد خرید حذف می‌کند.
-   */
-  // removeProduct(productId: number): void {
-  //   // فیلتر کردن آیتمی که ID آن با ID محصول حذف شده مطابقت ندارد
-  //   this.basket = this.basket.filter(item => item.id !== productId);
-  //   this.cartSubject.next(this.basket);
-  // }
+  decreaseProduct(productId: string) {
+    this._basket.update(items =>
+      items
+        .map(item =>
+          item.id == productId
+            ? { ...item, count: item.count - 1 }
+            : item
+        )
+        .filter(item => item.count > 0)
+    );
+  }
 
-  /**
-   * پاک کردن کامل سبد خرید
-   */
-  clearCart(): void {
-    this.basket = [];
-    this.cartSubject.next(this.basket);
+  removeProduct(productId: string) {
+    this._basket.update(items =>
+      items.filter(item => item.id !== productId)
+    );
+  }
+
+  clearCart() {
+    this._basket.set([]);
   }
 }
+

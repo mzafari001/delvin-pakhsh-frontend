@@ -1,30 +1,20 @@
-
-
-<mat-card class="product-card-container">
-
-  <img mat-card-image src="./images/{{product.imageUrl}}" [alt]="product.name" class="product-image">
-
-  <mat-card-content>
-
-    <h3 mat-card-title>{{ product.name }}</h3>
- 
-
-    <p class="price">{{ product.price}} تومان</p>
-
-    <mat-card-subtitle style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+<mat-card class="product-card">
+  <img mat-card-image src="./images/{{product.imageUrl}}" class="product-image">
+  <mat-card-content class="product-content">
+    <h3 mat-card-title>
+      {{ product.name }}
+    </h3>
+    <p class="price">
+      {{ product.price}} تومان
+    </p>
+    <mat-card-subtitle class="description">
       {{ product.description }}
     </mat-card-subtitle>
-
-
   </mat-card-content>
-
   <mat-card-actions>
-
-    <button mat-raised-button color="primary" (click)="buy(product)">
+    <button mat-raised-button (click)="buy(product) ">
       <mat-icon>shopping_cart</mat-icon>
       افزودن به سبد خرید
     </button>
   </mat-card-actions>
 </mat-card>
-
-

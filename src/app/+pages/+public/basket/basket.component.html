@@ -1,38 +1,53 @@
-<div class="basket-container">
+<mat-card class="basket-container">
   <h2>سبد خرید شما</h2>
 
-  <!-- استفاده از async pipe برای مشاهده لیست محصولات -->
-  <ng-container *ngIf="cartItems$ | async as items">
+  @if (cartItems().length == 0) {
+  <div class="empty-message">
+    سبد خرید شما خالی است.
+  </div>
+  }
 
-    <div *ngIf="items.length === 0" class="empty-message">
-      <p>سبد خرید شما خالی است.</p>
-    </div>
+  @if (cartItems().length > 0) {
 
-    <ul *ngIf="items.length > 0" class="item-list">
-      <li *ngFor="let item of items" class="basket-item">
+  <ul class="item-list">
+    @for (item of cartItems(); track item.id) {
+    <li class="basket-item">
 
-        <div class="item-details">
-          <strong>{{ item.name }}</strong>
-          <span>{{ item.price  }} تومان</span>
-          <!-- می‌توانید از Pipe برای فرمت‌بندی قیمت استفاده کنید -->
+      <div class="item-details">
+        <strong class="item-name">{{ item.name }}</strong>
+        <img mat-card-image src="./images/{{item.imageUrl}}" class="basket-image">
+        <div class="item-info">
+
+
+          <span>تعداد:{{ item.count }}</span>
+          &nbsp;
+          <span>قیمت:{{ item.price }} تومان </span>
+          <span>
+            قیمت کل:{{ item.price * item.count }} تومان
+          </span>
+
         </div>
-
-        <button
-          class="remove-btn"
-          (click)="handleRemove(item.id)">
-          حذف
-        </button>
-      </li>
-    </ul>
-
-    <div *ngIf="items.length > 0" class="footer">
-      <div class="total-price">
-        مجموع نهایی: <strong>{{ totalPrice  }} تومان</strong>
+        <button (click)="decrease(item.id)">−</button>
+        <button (click)="add(item)">+</button>
       </div>
-      <button class="clear-all-btn" (click)="clearBasket()">
-        تکمیل سفارش و خالی کردن سبد
+
+      <button class="remove-btn" (click)="handleRemove(item.id)">
+        حذف
       </button>
+
+    </li>
+    }
+  </ul>
+
+  <div class="footer">
+    <div class="total-price">
+      مجموع نهایی:
+      <strong>{{ totalPrice() }} تومان</strong>
     </div>
 
-  </ng-container>
-</div>
+    <button class="clear-all-btn" (click)="clearBasket()">
+      تکمیل سفارش و خالی کردن سبد
+    </button>
+  </div>
+  }
+</mat-card>

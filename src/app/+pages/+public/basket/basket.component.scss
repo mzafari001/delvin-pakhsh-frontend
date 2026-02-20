@@ -1,0 +1,145 @@
+.basket-container {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 24px;
+  border-radius: 16px;
+  background: #f3f4f6;
+}
+
+h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.empty-message {
+  padding: 48px;
+  text-align: center;
+  color: #6b7280;
+}
+
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.basket-item {
+  display: flex;
+  /* flex-direction: column; <--- این خط رو حذف کن یا کامنت کن */
+  flex-direction: row; /* حالا عناصر در یک سطر کنار هم قرار می‌گیرند */
+  align-items: flex-start; /* برای اینکه بالا هم‌تراز بشن */
+
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px ;
+  margin: 12px auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.basket-item:hover {
+  background: #b1b1b1;
+}
+
+// app-product {
+
+//   flex-shrink: 0;
+// }
+
+.item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center; /* باعث میشه همه فرزندان مثل تصویر وسط افقی قرار بگیرن */
+
+}
+.item-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #111827;
+  margin-bottom: 4px;
+}
+.basket-image {
+  width: 50%;
+  height: 50%;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0; /* از کوچک شدن تصویر در فلکس جلوگیری می‌کند */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.item-info {
+  display: flex;
+ flex-direction: column;
+  align-items: center;
+  color: #374151;
+}
+
+.item-details span {
+  color: #374151;
+}
+
+.item-details button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+
+}
+
+.item-details button:hover {
+  background: #e5e7eb;
+}
+
+.remove-btn {
+  margin-right: auto;
+  background: none;
+  border: 1px solid;
+  color: #dc2626;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: rgba(220, 38, 38, 0.08);
+}
+
+.footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #d1d5db;
+  background: #eef0f3;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.total-price {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+// .total-price strong {
+//   color: var(--mat-sys-color-primary);
+// }
+
+.clear-all-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 10px;
+  background: rgb(201, 200, 200);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.clear-all-btn:hover {
+  background: rgb(2, 4, 80);
+  color: #f9fafb;
+}

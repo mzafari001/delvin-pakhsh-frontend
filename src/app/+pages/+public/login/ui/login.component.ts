@@ -12,18 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../../../+shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginResult } from '../../../../+shared/models/login_result';
-import { Token } from '@angular/compiler';
-
-
-
-
-
 @Component({
   selector: 'app-login',
   imports: [
     MatCardModule,
+    RouterLink,
     AsyncPipe,
     MatFormFieldModule,
     MatIconModule,
@@ -54,7 +49,7 @@ export class LoginComponent {
       }
       else {
         sessionStorage.setItem('token' , result.token);
-       
+
         if (this.login.keepMe) {
           //تنظیم من را بخاطر بسپار
           localStorage.setItem('token',result.token);

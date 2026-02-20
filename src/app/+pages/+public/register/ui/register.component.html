@@ -1,0 +1,108 @@
+<mat-card [class.mobile]="(isHandset$|async)" appearance="outlined">
+  hgjgj
+</mat-card>
+
+
+
+<!-- <mat-card [class.mobile]="(isHandset$|async)" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>ایجاد حساب کاربری</mat-card-title>
+  </mat-card-header>
+  <mat-card-content> -->
+
+    <!-- فرم اصلی با استفاده از (ngSubmit) -->
+    <!-- <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm"> -->
+
+      <!-- فیلد ۱: نام کامل -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>نام کامل</mat-label>
+        <input matInput
+               name="fullName"
+               [(ngModel)]="registerData.fullName"
+               placeholder="نام و نام خانوادگی"
+               required>
+        <mat-icon matSuffix>person</mat-icon> -->
+        <!-- نمایش خطاها -->
+        <!-- <mat-error *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+          نام کامل الزامی است.
+        </mat-error> -->
+      <!-- </mat-form-field> -->
+
+      <!-- فیلد ۲: نام کاربری
+      <mat-form-field appearance="outline">
+        <mat-label>نام کاربری</mat-label>
+        <input matInput
+               name="username"
+               [(ngModel)]="registerData.username"
+               placeholder="نام کاربری انتخابی"
+               required
+               minlength="4"
+               #username="ngModel">
+        <mat-icon matSuffix>person_outline</mat-icon> -->
+        <!-- نمایش خطاها -->
+        <!-- <mat-error *ngIf="username.errors?.['required'] && (username.dirty || username.touched)"> -->
+          <!-- نام کاربری الزامی است. -->
+        <!-- </mat-error>
+        <mat-error *ngIf="username.errors?.['minlength'] && (username.dirty || username.touched)">
+          نام کاربری باید حداقل ۴ کاراکتر باشد.
+        </mat-error>
+      </mat-form-field> -->
+
+      <!-- فیلد ۳: رمز عبور -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>رمز عبور</mat-label>
+        <input matInput
+               name="password"
+               [(ngModel)]="registerData.password"
+               placeholder="رمز عبور قوی"
+               required
+               minlength="6"
+               type="password"
+               #password="ngModel">
+        <mat-icon matSuffix>lock</mat-icon> -->
+        <!-- نمایش خطاها -->
+        <!-- <mat-error *ngIf="password.errors?.['required'] && (password.dirty || password.touched)">
+          رمز عبور الزامی است.
+        </mat-error>
+        <mat-error *ngIf="password.errors?.['minlength'] && (password.dirty || password.touched)">
+          رمز عبور باید حداقل ۶ کاراکتر باشد.
+        </mat-error>
+      </mat-form-field> -->
+
+      <!-- فیلد ۴: تکرار رمز عبور -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>تکرار رمز عبور</mat-label>
+        <input matInput
+               name="confirmPassword"
+               [(ngModel)]="registerData.confirmPassword"
+               placeholder="تأیید رمز عبور"
+               required
+               type="password"
+               #confirmPassword="ngModel">
+        <mat-icon matSuffix>vpn_key</mat-icon> -->
+        <!-- نمایش خطای عدم تطابق -->
+        <!-- <mat-error *ngIf="registerForm.errors?.['mismatch'] && (confirmPassword.dirty || confirmPassword.touched)">
+          رمزهای عبور با هم مطابقت ندارند.
+        </mat-error>
+        <mat-error *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.dirty || confirmPassword.touched)">
+          تأیید رمز عبور الزامی است.
+        </mat-error>
+      </mat-form-field> -->
+
+      <!-- پیام های عمومی (مثلا پس از ثبت نام یا خطا در سرور) -->
+      <!-- @if (message!='') {
+      <div class="message-area">{{message}}</div>
+      } -->
+
+      <!-- دکمه ارسال فرم -->
+      <!-- <button mat-flat-button color="primary" type="submit" [disabled]="registerForm.invalid || busy">
+        @if(busy){
+          <mat-spinner diameter="30"></mat-spinner>
+        } @else {
+          ایجاد حساب
+        }
+      </button>
+
+    </form>
+  </mat-card-content>
+</mat-card> -->

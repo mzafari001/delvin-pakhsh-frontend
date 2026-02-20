@@ -1,35 +1,27 @@
-
 import { Component, inject, OnInit } from '@angular/core';
-import { Product } from '../../../../+shared/models/product.model';
 import { ProductComponent } from './product/product.component';
 import { ProductsService } from '../../../../+shared/services/products.service';
 import { BasketService } from '../../../../+shared/services/basket.service';
-import { AsyncPipe } from '@angular/common';
-
-
+import { BasketProduct } from '../../../../+shared/models/basketProduct.model';
 @Component({
   selector: 'app-products',
   imports: [
-
-    AsyncPipe,
     ProductComponent
-
   ],
   templateUrl: 'public-products.component.html',
-  styleUrls: ['public-products.component.scss']
+  styleUrl: 'public-products.component.scss'
 })
-export class PublicProductsComponent {
-
-  productsServic = inject(ProductsService);
-  private basketService = inject(BasketService);
-
-   products$ = this.productsServic.list();
-
-  AddToBasket(product: Product) {
-    this.basketService.addProduct(product);
-    console.log(product);
+export class PublicProductsComponent implements OnInit {
+  ngOnInit(): void {
+    this.productsServic.publicList().subscribe(r => {
+      this.products = r;
+    });
   }
-
-
+  AddToBasket(product: BasketProduct) {
+    this.basketService.addProduct(product);
+  }
+  productsServic = inject(ProductsService);
+  basketService = inject(BasketService);
+  products: any;
 
 }

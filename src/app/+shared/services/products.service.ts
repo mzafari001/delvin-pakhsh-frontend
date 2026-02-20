@@ -5,10 +5,13 @@ import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class ProductsService {
   backend = inject(BackendService);
 
+  publicList(){
+    return this.backend.get('/api/v1/public/products/list');
+  }
 
   list() {
     return this.backend.get('/api/v1/products/list');
@@ -23,8 +26,5 @@ export class ProductsService {
 
   remove(id: string) {
     return this.backend.delete('/api/v1/products/remove/' + id);
-
   }
-
-
 }

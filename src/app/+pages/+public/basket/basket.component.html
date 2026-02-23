@@ -14,11 +14,11 @@
     <li class="basket-item">
 
       <div class="item-details">
-        <strong class="item-name">{{ item.name }}</strong>
+
         <img mat-card-image src="./images/{{item.imageUrl}}" class="basket-image">
         <div class="item-info">
 
-
+          <strong class="item-name">{{ item.name }}</strong>
           <span>تعداد:{{ item.count }}</span>
           &nbsp;
           <span>قیمت:{{ item.price }} تومان </span>
@@ -26,14 +26,17 @@
             قیمت کل:{{ item.price * item.count }} تومان
           </span>
 
+          <div >
+            <button (click)="decrease(item.id)">−</button>
+            <button (click)="add(item)">+</button>
+            <button class="remove-btn" (click)="handleRemove(item.id)">
+             حذف
+            </button>
+          </div>
         </div>
-        <button (click)="decrease(item.id)">−</button>
-        <button (click)="add(item)">+</button>
       </div>
 
-      <button class="remove-btn" (click)="handleRemove(item.id)">
-        حذف
-      </button>
+
 
     </li>
     }

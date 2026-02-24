@@ -42,7 +42,6 @@ export class LoginComponent {
     this.busy = true;
     this.auth.check(this.login.username, this.login.password).subscribe(r => {
       const result = r as LoginResult ;
-      //reult ro tabdil mikone be Loginresult
       if (!result.successfull) {
         this.message = result.message;
 
@@ -50,10 +49,10 @@ export class LoginComponent {
       else {
         sessionStorage.setItem('token' , result.token);
 
-        if (this.login.keepMe) {
-          //تنظیم من را بخاطر بسپار
-          localStorage.setItem('token',result.token);
-        }
+        // if (this.login.keepMe) {
+        //   //تنظیم من را بخاطر بسپار
+        //   localStorage.setItem('token',result.token);
+        // }
         this.router.navigate(['/admin']);
       }
 
